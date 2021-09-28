@@ -15,7 +15,6 @@ export default function LoginPage({f7router}){
 
   function loginEmailPassword(email, password) {
     f7.dialog.preloader()
-    // Create an anonymous credential
     const credentials = Realm.Credentials.emailPassword(email, password);
     
     app.logIn(credentials).then(dbUser => {

@@ -12,7 +12,7 @@ export default function HomePage({f7router}){
     f7.dialog.preloader()
     store.dispatch('logout', app)
   }
-  
+
 
   useEffect(() => {
     console.log("route: ", f7router.router)
@@ -25,7 +25,8 @@ export default function HomePage({f7router}){
       <Navbar title="Home"/>
       <BlockTitle>Animation Studio Portal</BlockTitle>
       {useStore('user') && <Block>
-        <p>User: {JSON.stringify(store.state.user)}</p>
+        <p>User: {JSON.stringify(store.state.user._profile.data.email)}</p>
+        <p>Role: {JSON.stringify(store.state.user.customData.role)}</p>
         <Button onClick={logout}>Log out</Button>
       </Block>}
     </Page>

@@ -1,5 +1,6 @@
 
 import { createStore } from 'framework7/lite';
+import {f7} from 'framework7-react';
 import * as Realm from "realm-web";
 const app = new Realm.App({ id: "animationstudioapp-hxbnj" });
 
@@ -27,6 +28,7 @@ const store = createStore({
       .then(() => {
         console.log("log out successful: ")
         state.user = null
+        f7.dialog.close()
       })
       .catch(error=> {
         console.log("log out error: ", error)

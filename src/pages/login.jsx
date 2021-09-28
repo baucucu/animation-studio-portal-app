@@ -14,16 +14,19 @@ export default function LoginPage({f7router}){
 
 
   function loginEmailPassword(email, password) {
+    f7.dialog.preloader()
     // Create an anonymous credential
     const credentials = Realm.Credentials.emailPassword(email, password);
     
     app.logIn(credentials).then(dbUser => {
       store.dispatch('setUser', dbUser)
       f7router.navigate('/')
+      f7.dialog.close()
     })
     .catch((err) => {
       console.error("Failed to log in", err);
       setLoginError(err)
+      f7.dialog.close()
     })
   }
 

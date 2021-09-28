@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { f7ready, Page, Navbar, Block, BlockTitle,Button, useStore, LoginScreen, LoginScreenTitle, List, ListInput, BlockFooter, ListButton,f7} from 'framework7-react';
+import { Page, Navbar, Block, BlockTitle,Button, useStore, LoginScreen, LoginScreenTitle, List, ListInput, BlockFooter, ListButton,f7} from 'framework7-react';
 
 import store from '../js/store';
 import * as Realm from "realm-web";
@@ -7,9 +7,12 @@ import * as Realm from "realm-web";
 export default function HomePage({f7router}){
 
   const app = new Realm.App({ id: "animationstudioapp-hxbnj" });
+  
   function logout() {
+    f7.dialog.preloader()
     store.dispatch('logout', app)
   }
+  
 
   useEffect(() => {
     console.log("route: ", f7router.router)
